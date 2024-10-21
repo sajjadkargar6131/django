@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
+from distutils.command.config import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -78,12 +79,36 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("POSTGRESQL_DB_NAME"),
+        'USER': os.getenv("POSTGRESQL_DB_USER"),
+        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
+        'HOST': os.getenv("POSTGRESQL_DB_HOST"),
+        'PORT': os.getenv("POSTGRESQL_DB_PORT"),
+    },
 }
+# other codes ...
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": config("PGDB_ENGINE", default="django.db.backends.postgresql"),
+#         "NAME": config("PGDB_NAME", default="postgres"),
+#         "USER": config("PGDB_USER", default="root"),
+#         "PASSWORD": config("PGDB_PASS", default="aoAKFGo3izlVCXHPc3eXtMPx"),
+#         "HOST": config("PGDB_HOST", default="intelligent-hermann-isfuhx9fv-db"),
+#         "PORT": config("PGDB_PORT", cast=int, default=5432),
+#     }
+# }
 
 
 # Password validation
