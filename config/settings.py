@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 DATABASES = {
 
@@ -97,18 +97,8 @@ DATABASES = {
         'PORT': os.getenv("POSTGRESQL_DB_PORT"),
     },
 }
-# other codes ...
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": config("PGDB_ENGINE", default="django.db.backends.postgresql"),
-#         "NAME": config("PGDB_NAME", default="postgres"),
-#         "USER": config("PGDB_USER", default="root"),
-#         "PASSWORD": config("PGDB_PASS", default="aoAKFGo3izlVCXHPc3eXtMPx"),
-#         "HOST": config("PGDB_HOST", default="intelligent-hermann-isfuhx9fv-db"),
-#         "PORT": config("PGDB_PORT", cast=int, default=5432),
-#     }
-# }
+
 
 
 # Password validation
