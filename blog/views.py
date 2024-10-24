@@ -56,7 +56,7 @@ class PostCreateView(generic.CreateView):
 #         return redirect('blog_index')
 #     return render(request, 'blog/post_create.html',{'form': form})
 
-class PostUpdateview(generic.UpdateView):
+class PostUpdateView(generic.UpdateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'blog/post_create.html'
